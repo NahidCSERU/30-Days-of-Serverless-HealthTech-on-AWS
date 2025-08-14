@@ -23,3 +23,13 @@ resource "aws_cognito_user_pool" "user_pool" {
   name = "healthtech-user-pool"
   auto_verified_attributes = ["email"]
 }
+# Cognito User Pool Client
+resource "aws_cognito_user_pool_client" "web_client" {
+  name         = "web-client"
+  user_pool_id = aws_cognito_user_pool.user_pool.id
+  explicit_auth_flows = [
+    "ALLOW_USER_PASSWORD_AUTH",
+    "ALLOW_USER_SRP_AUTH",
+    "ALLOW_REFRESH_TOKEN_AUTH"
+  ]
+}

@@ -17,3 +17,9 @@ resource "aws_dynamodb_table" "users" {
     Name = "HealthTech Users Table"
   }
 }
+
+# Cognito User Pool
+resource "aws_cognito_user_pool" "user_pool" {
+  name = "healthtech-user-pool"
+  auto_verified_attributes = ["email"]
+}
